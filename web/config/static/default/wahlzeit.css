@@ -1,9 +1,9 @@
-body,form,table,td {
+body, form, table, td {
 	font-family: verdana, tahoma, arial, helvetica, sans-serif;
 	font-size: 10pt;
 }
 
-input,textarea {
+input, textarea {
 	font-family: verdana, tahoma, arial, helvetica, sans-serif;
 	font-size: 9pt;
 }
@@ -23,7 +23,7 @@ h1 {
 	margin-top: 6pt;
 	margin-bottom: 6pt;
 }
-	
+
 h2 {
 	font-size: 12;
 	margin-top: 18pt;
@@ -110,7 +110,7 @@ td.inline {
 td.spacer {
 	border: 0px;
 	padding: 8px;
-}	
+}
 
 td.side {
 	border: 1px solid #99ccff;
@@ -201,4 +201,3 @@ td.fiveCol5 {
 	text-align: left;
 	vertical-align: middle;
 }
-	
