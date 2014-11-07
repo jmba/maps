@@ -13,6 +13,8 @@ public class LocationTest extends TestCase {
 	 * 
 	 */
 	public void testHasRights() throws IllegalArgumentException, UnknownMapcodeException {
-		MapCodeLocation mpc = new MapCodeLocation();
+			MapCodeLocation mcl = new MapCodeLocation();
+			String bla = mcl.getLocation();
+			System.out.println("   "+bla);
 	}
 }

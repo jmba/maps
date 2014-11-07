@@ -11,16 +11,26 @@ public class MapCodeLocation extends AbstractLocation {
 
 	private Mapcode mapcodeCoordinate = null;
 	
-	public MapCodeLocation() throws IllegalArgumentException, UnknownMapcodeException {
+	public MapCodeLocation() {
 		mapcodeCoordinate = new Mapcode("4J.RB", Territory.FRA);
-		String iso = mapcodeCoordinate.asInternationalISO();
-		final String mapcode2 = "NLD 49.4V";
-		final Point p = MapcodeCodec.decode(mapcode2);
-
-		double lat = p.getLatDeg();
-		double lon = p.getLonDeg();
+	}
+	
+	@Override
+	public String getLocation() {
+		return mapcodeCoordinate.toString();
 	}
 
+	@Override
+	protected void doSetLocation(String location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected String doGetLocation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	@Override
 	public void asString() {

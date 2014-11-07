@@ -5,6 +5,9 @@ public class GPSLocation extends AbstractLocation {
 	private GPSCoordinate longitude;
 	private GPSCoordinate latitude;
 	
+	public GPSLocation(String location) {
+		
+	}
 	
 	public GPSCoordinate getLongitude() {
 		return longitude;
@@ -23,7 +26,18 @@ public class GPSLocation extends AbstractLocation {
 	}
 
 	@Override
-	public void asString() {
+	protected void doSetLocation(String location) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected String doGetLocation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void asString() {
 		// TODO Auto-generated method stub
 	}
 }
