@@ -6,7 +6,12 @@ import com.mapcode.Mapcode;
 import com.mapcode.Territory;
 import com.mapcode.UnknownTerritoryException;
 
-
+/**
+ * Concrete implementation of an MapCode-location.
+ * Example of the string representation: "NLD 49.4V"
+ * @author jmba
+ *
+ */
 public class MapCodeLocation extends AbstractLocation {
 
 	private Mapcode mapcode = null;
@@ -39,10 +44,6 @@ public class MapCodeLocation extends AbstractLocation {
 		mapcode = new Mapcode(coordinate, teritory);
 	}
 
-	@Override
-	protected String doGetLocation() {
-		return this.asString();
-	}
 	
 	@Override
 	public String asString() {

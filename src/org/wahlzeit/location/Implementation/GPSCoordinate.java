@@ -1,5 +1,11 @@
 package org.wahlzeit.location.Implementation;
 
+/**
+ * Concrete representation of a gps coordinate. It
+ * consists of an direction and an degree-value.
+ * @author jonet
+ *
+ */
 public class GPSCoordinate {
 
 	String coordinateDirection = "";

@@ -5,6 +5,13 @@ import com.mapcode.MapcodeCodec;
 import com.mapcode.Point;
 import com.mapcode.UnknownMapcodeException;
 
+/**
+ * Converter to get MapCodeLocation form GPS-string or
+ * GPS-location from MapCodeString.
+ * 
+ * @author jmba
+ *
+ */
 public class LocationConverter {
 	
 	public MapCodeLocation convertToMapCodeLocation(String GPSString){
@@ -21,7 +28,7 @@ public class LocationConverter {
 	
 	public String convertToMapCodeString(String GPSString){
 			return convertToMapCodeLocation(GPSString).asString();
-		}
+	}
 	
 	public GPSLocation convertToGPSLocation(String mapCodeString) throws IllegalArgumentException, UnknownMapcodeException{
 		MapCodeLocation mapCodeLocation = new MapCodeLocation(mapCodeString);

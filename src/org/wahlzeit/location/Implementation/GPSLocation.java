@@ -2,7 +2,12 @@ package org.wahlzeit.location.Implementation;
 
 import java.security.InvalidParameterException;
 
-
+/**
+ * Concrete implementation of an GPS-location.
+ * Example of the string representation: "37.31917 N -122.04511 E"
+ * @author jmba
+ *
+ */
 public class GPSLocation extends AbstractLocation {
 
 	private GPSCoordinate longitude;
@@ -62,11 +67,6 @@ public class GPSLocation extends AbstractLocation {
 					"MapcodeLocation.doSetLocation(" + location
 							+ ") parameter invalid.");
 		}
-	}
-
-	@Override
-	protected String doGetLocation() {
-		return toString();
 	}
 
 	@Override
