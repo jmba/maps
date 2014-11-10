@@ -1,26 +1,59 @@
 package org.wahlzeit.location.Implementation;
 
 import com.mapcode.Mapcode;
+import com.mapcode.MapcodeCodec;
+import com.mapcode.Point;
+import com.mapcode.UnknownMapcodeException;
 
 public class LocationConverter {
-	private Mapcode mapCode = null;
-	private GPSLocation gpsLocation = null;
 	
-	
-	public String getMapCodeFromGPS(String GPS){
+	public MapCodeLocation convertToMapCodeLocation(String GPSString){
+		GPSLocation gpsLocation = new GPSLocation(GPSString);
 		
-//		mapcodeCoordinate = new Mapcode("4J.RB", Territory.FRA);
-//		String iso = mapcodeCoordinate.asInternationalISO();
-//		final String mapcode2 = "NLD 49.4V";
-//		final Point p = MapcodeCodec.decode(mapcode2);
-//
-//		double lat = p.getLatDeg();
-//		double lon = p.getLonDeg();
+		double latitude = gpsLocation.getLatitude().getDegree();
+		double longitude = gpsLocation.getLongitude().getDegree();
 		
-		return "";
+		Mapcode mapcode = MapcodeCodec.encodeToShortest(latitude, longitude);
+		MapCodeLocation mapcodeLocation = new MapCodeLocation(mapcode);
+		
+		return mapcodeLocation;
 	}
 	
-	public String getGPSFromMapCode(String MapCodeString){
-		return "";
+	public String convertToMapCodeString(String GPSString){
+			return convertToMapCodeLocation(GPSString).asString();
+		}
+	
+	public GPSLocation convertToGPSLocation(String mapCodeString) throws IllegalArgumentException, UnknownMapcodeException{
+		MapCodeLocation mapCodeLocation = new MapCodeLocation(mapCodeString);
+		final Point p = MapcodeCodec.decode(mapCodeLocation.asString());
+		
+		GPSCoordinate latitude = new GPSCoordinate();	
+		GPSCoordinate longitude = new GPSCoordinate();
+		
+		double latitudeDegree = p.getLatDeg();
+		double longitudeDegree = p.getLonDeg();
+		
+		latitude.setDegree(latitudeDegree);
+		longitude.setDegree(longitudeDegree);
+		
+		if(latitudeDegree >=0){
+			latitude.setDirection("N");
+		} else{
+			latitude.setDirection("S");
+		}
+		
+		if(longitudeDegree >=0){
+			longitude.setDirection("E");
+		}else{
+			longitude.setDirection("W");
+		}
+		
+		GPSLocation loc = new GPSLocation(latitude, longitude);
+		
+		return loc;
+	}
+	
+	public String convertToGPSString(String mapCodeString) throws IllegalArgumentException, UnknownMapcodeException{
+		return convertToGPSLocation(mapCodeString).asString();
 	}
 }

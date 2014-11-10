@@ -1,20 +1,16 @@
 package org.wahlzeit.location.Implementation;
 
 public class GPSCoordinate {
-	
-	public enum CoordinateDirection {
-		  NORTH, EAST, SOUTH, WEST
-	}
-	
-	CoordinateDirection direction;
+
+	String coordinateDirection = "";
 	double degree = 0.0;
 	
-	public CoordinateDirection getDirection() {
-		return direction;
+	public String getDirection() {
+		return coordinateDirection;
 	}
 	
-	public void setDirection(CoordinateDirection direction) {
-		this.direction = direction;
+	public void setDirection(String direction) {
+		this.coordinateDirection = direction;
 	}
 
 	public double getDegree() {

@@ -1,40 +1,53 @@
 package org.wahlzeit.location.Implementation;
 
+import java.security.InvalidParameterException;
+
 import com.mapcode.Mapcode;
-import com.mapcode.MapcodeCodec;
-import com.mapcode.Point;
 import com.mapcode.Territory;
-import com.mapcode.UnknownMapcodeException;
+import com.mapcode.UnknownTerritoryException;
 
 
 public class MapCodeLocation extends AbstractLocation {
 
-	private Mapcode mapcodeCoordinate = null;
+	private Mapcode mapcode = null;
 	
-	public MapCodeLocation() {
-		mapcodeCoordinate = new Mapcode("4J.RB", Territory.FRA);
+	public MapCodeLocation(String location) {
+		doSetLocation(location);
+	}
+	
+	public MapCodeLocation(Mapcode mapcode){
+		this.mapcode = mapcode;
+	}
+	
+	public Mapcode getMapCode(){
+		return mapcode;
 	}
 	
 	@Override
-	public String getLocation() {
-		return mapcodeCoordinate.toString();
-	}
+	protected void doSetLocation(String location) throws InvalidParameterException {
+		String[] locationArray = location.split(" ");
 
-	@Override
-	protected void doSetLocation(String location) {
-		// TODO Auto-generated method stub
-		
+		String coordinate = locationArray[1];
+		Territory teritory;
+		try {
+			teritory = Territory.fromString(locationArray[0]);
+		} catch (UnknownTerritoryException e) {
+			throw new InvalidParameterException(
+					"MapcodeLocation.doSetLocation(" + location
+							+ ") parameter invalid.");
+		}
+		mapcode = new Mapcode(coordinate, teritory);
 	}
 
 	@Override
 	protected String doGetLocation() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.asString();
 	}
 	
 	@Override
-	public void asString() {
-		// TODO Auto-generated method stub
-		
-	}
+	public String asString() {
+		String mapCodeString = mapcode.getMapcode();
+		String territoryString = mapcode.getTerritory().name();
+		return territoryString+" "+mapCodeString;		
+	} 
 }
