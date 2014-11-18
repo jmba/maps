@@ -7,13 +7,18 @@ import com.mapcode.UnknownMapcodeException;
 
 public class LocationConverterTest extends TestCase {
 	
-	public void testConvertToGPSLocation() throws IllegalArgumentException, UnknownMapcodeException  {
+	public void testConvertToGPSLocation() {
 		String MapCodeString = "NLD 49.4V";
 		String GPSString = "52.376514 N 4.908542 E";
 		
 		LocationConverter converter = new LocationConverter();
-		String convertedGPSString = converter.convertToGPSString(MapCodeString);
-		assertTrue(convertedGPSString.equals(GPSString));
+
+		try {
+			String convertedGPSString = converter.convertToGPSString(MapCodeString);
+			assertTrue(convertedGPSString.equals(GPSString));
+		} catch(UnknownMapcodeException e){
+			e.printStackTrace();
+		}
 	}
 	
 	public void testConvertToGPSString()  {

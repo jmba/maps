@@ -35,7 +35,7 @@ public class AllTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new TestSuite();
 		
-		suite.addTestSuite(EmailAddressTest.class);
+		//suite.addTestSuite(EmailAddressTest.class);
 		
 		suite.addTest(org.wahlzeit.services.mailing.AllTests.suite());	
 		

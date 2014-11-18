@@ -34,8 +34,7 @@ public class AllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new TestSuite();
-		
-		suite.addTest(org.wahlzeit.handlers.AllTests.suite());
+
 		suite.addTest(org.wahlzeit.services.AllTests.suite());		
 		suite.addTest(org.wahlzeit.model.AllTests.suite());
 		suite.addTest(org.wahlzeit.utils.AllTests.suite());
