@@ -1,5 +1,7 @@
 package org.wahlzeit.maptype.Implementation;
 
+import junit.framework.Assert;
+
 /**
  * Represents the map of a country. The used ident-code format is
  * ISO 3166 2-letter code.
@@ -21,6 +23,9 @@ public class CountryMap extends AbstractMapType {
     protected void doSetIdentCode(String countryCode) throws IllegalArgumentException {
         assertCountryCodeFormat(countryCode);
         this.countryCode = countryCode;
+
+        // Postcondition
+        Assert.assertSame(this.countryCode, countryCode);
     }
 
     /**

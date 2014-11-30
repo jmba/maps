@@ -1,5 +1,7 @@
 package org.wahlzeit.maptype.Implementation;
 
+import junit.framework.Assert;
+
 /**
  * Represents the map of a city. The used ident-code format is
  * IATA 3-letter code which is used on airports.
@@ -21,6 +23,9 @@ public class CityMap extends AbstractMapType {
     protected void doSetIdentCode(String cityCode) throws IllegalArgumentException {
         assertCityCodeFormat(cityCode);
         this.cityCode = cityCode;
+
+        // Postcondition
+        Assert.assertSame(this.cityCode,cityCode);
     }
 
     /**

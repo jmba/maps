@@ -42,6 +42,7 @@ public interface IMapType {
      * @methodtype setter
      * @throws IllegalArgumentException if ident-code is syntactically wrong
      * Precondition: semantic check (given ident-code must match to what's shown on the map)
+     * Precondition: Argument must not be null
      * Postcondition: ident-code gets syntax-checked in concrete implementations and set correctly
      */
     public void setIdentCode(String identCode);
@@ -49,6 +50,8 @@ public interface IMapType {
     /**
      * @methodtype setter
      * @param location (value object)
+     * @Precondition: Argument must not be null
+     * @Postcondition: Location set correctly
      */
     public void setLocation(ILocation location);
 

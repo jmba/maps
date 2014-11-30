@@ -4,6 +4,7 @@ import com.mapcode.Mapcode;
 import com.mapcode.MapcodeCodec;
 import com.mapcode.Point;
 import com.mapcode.UnknownMapcodeException;
+import org.wahlzeit.location.LocationManager;
 
 /**
  * Converter to get MapCodeLocation form GPS-string or
@@ -31,31 +32,30 @@ public class LocationConverter {
 	}
 	
 	public GPSLocation convertToGPSLocation(String mapCodeString) throws IllegalArgumentException, UnknownMapcodeException{
-		MapCodeLocation mapCodeLocation = new MapCodeLocation(mapCodeString);
+		MapCodeLocation mapCodeLocation = LocationManager.getMapCodeLocationObject(mapCodeString);
 		final Point p = MapcodeCodec.decode(mapCodeLocation.asString());
-		
-		GPSCoordinate latitude = new GPSCoordinate();	
-		GPSCoordinate longitude = new GPSCoordinate();
-		
-		double latitudeDegree = p.getLatDeg();
-		double longitudeDegree = p.getLonDeg();
-		
-		latitude.setDegree(latitudeDegree);
-		longitude.setDegree(longitudeDegree);
-		
+
+		String latitudeDirection = "";
+		String longitudeDirection = "";
+		double latitudeDegree = 0.0;
+		double longitudeDegree = 0.0;
+
+		latitudeDegree = p.getLatDeg();
+		longitudeDegree = p.getLonDeg();
+
 		if(latitudeDegree >=0){
-			latitude.setDirection("N");
+			latitudeDirection="N";
 		} else{
-			latitude.setDirection("S");
+			latitudeDirection="S";
 		}
 		
 		if(longitudeDegree >=0){
-			longitude.setDirection("E");
+			longitudeDirection = "E";
 		}else{
-			longitude.setDirection("W");
+			longitudeDirection="W";
 		}
 		
-		GPSLocation loc = new GPSLocation(latitude, longitude);
+		GPSLocation loc = LocationManager.getGPSLocationObject(latitudeDegree + " " + latitudeDirection + " " + longitudeDegree + " " + longitudeDirection);
 		
 		return loc;
 	}

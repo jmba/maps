@@ -11,15 +11,5 @@ import org.wahlzeit.location.ILocation;
  * @author jmba
  */
 public abstract class AbstractLocation implements ILocation {
-	
 	public abstract String asString();
-	protected abstract void doSetLocation(String location) throws InvalidParameterException;
-
-	public void setLocation(String location) throws InvalidParameterException{
-		if(location==null){
-			throw new NullPointerException();
-		}
-		
-		doSetLocation(location);
-	}
 }

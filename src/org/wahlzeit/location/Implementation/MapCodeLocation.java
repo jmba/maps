@@ -10,26 +10,13 @@ import com.mapcode.UnknownTerritoryException;
  * Concrete implementation of an MapCode-location.
  * Example of the string representation: "NLD 49.4V"
  * @author jmba
- *
+ * @type value
  */
 public class MapCodeLocation extends AbstractLocation {
 
-	private Mapcode mapcode = null;
+	private final Mapcode mapcode;
 	
 	public MapCodeLocation(String location) {
-		doSetLocation(location);
-	}
-	
-	public MapCodeLocation(Mapcode mapcode){
-		this.mapcode = mapcode;
-	}
-	
-	public Mapcode getMapCode(){
-		return mapcode;
-	}
-	
-	@Override
-	protected void doSetLocation(String location) throws InvalidParameterException {
 		String[] locationArray = location.split(" ");
 
 		String coordinate = locationArray[1];
@@ -43,8 +30,15 @@ public class MapCodeLocation extends AbstractLocation {
 		}
 		mapcode = new Mapcode(coordinate, teritory);
 	}
-
 	
+	public MapCodeLocation(Mapcode mapcode){
+		this.mapcode = mapcode;
+	}
+	
+	public Mapcode getMapCode(){
+		return mapcode;
+	}
+
 	@Override
 	public String asString() {
 		String mapCodeString = mapcode.getMapcode();

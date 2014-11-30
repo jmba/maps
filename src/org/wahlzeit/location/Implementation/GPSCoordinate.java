@@ -1,8 +1,5 @@
 package org.wahlzeit.location.Implementation;
 
-
-import javax.validation.constraints.Max;
-
 /**
  * Concrete representation of a gps coordinate. It
  * consists of an direction and an degree-value.
@@ -11,24 +8,18 @@ import javax.validation.constraints.Max;
  */
 public class GPSCoordinate {
 
-	String coordinateDirection = "";
+	private final String coordinateDirection;
+	private final double degree;
 
-    @Max(1)
-    double degree = 0.0;
-	
-	public String getDirection() {
+	GPSCoordinate(String coordinateDirection,double degree){
+		this.degree = degree;
+		this.coordinateDirection = coordinateDirection;
+	}
+
+	public final  String getDirection() {
 		return coordinateDirection;
 	}
-	
-	public void setDirection(String direction) {
-		this.coordinateDirection = direction;
-	}
-
-	public double getDegree() {
+	public final double getDegree() {
 		return degree;
-	}
-
-	public void setDegree(double degree) {
-		this.degree = degree;
 	}
 }
