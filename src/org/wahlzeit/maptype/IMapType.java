@@ -60,4 +60,5 @@ public interface IMapType {
      * @return the value-object location
      */
     public ILocation getLocation();
+
 }
