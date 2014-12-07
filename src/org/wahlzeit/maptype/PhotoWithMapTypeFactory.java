@@ -1,24 +1,23 @@
 package org.wahlzeit.maptype;
 
 import org.wahlzeit.maptype.Implementation.PhotoWithMapType;
-import org.wahlzeit.model.Photo;
-import org.wahlzeit.model.PhotoFilter;
-import org.wahlzeit.model.PhotoId;
-import org.wahlzeit.model.PhotoTagCollector;
+import org.wahlzeit.model.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by jonet on 07.12.14.
+ * Created by Johannes Bayerl on 07.12.14.
+ *
+ * Factorymethod for PhotoWithMapType-objects.
+ *
  */
-public class PhotoWithMapTypeFactory {
+public class PhotoWithMapTypeFactory extends PhotoFactory {
     private static PhotoWithMapTypeFactory instance = null;
 
     private PhotoWithMapTypeFactory() {}
 
     /**
-     * @type
      * @return Singleton-instance
      */
     public static PhotoWithMapTypeFactory getInstance() {
@@ -28,40 +27,24 @@ public class PhotoWithMapTypeFactory {
         return instance;
     }
 
-
     /**
      * @methodtype factory
      */
-    public Photo createPhoto() {
+    public PhotoWithMapType createPhoto() {
         return new PhotoWithMapType();
     }
 
     /**
-     *
+     * @methodtype factory
      */
-    public Photo createPhoto(PhotoId id) {
+    public PhotoWithMapType createPhoto(PhotoId id) {
         return new PhotoWithMapType(id);
     }
 
     /**
-     *
+     * @methodtype factory
      */
-    public Photo createPhoto(ResultSet rs) throws SQLException {
+    public PhotoWithMapType createPhoto(ResultSet rs) throws SQLException {
         return new PhotoWithMapType(rs);
-    }
-
-    /**
-     *
-     */
-    public PhotoFilter createPhotoFilter() {
-        return new PhotoFilter();
-    }
-
-    /**
-     *
-     */
-    public PhotoTagCollector createPhotoTagCollector() {
-
-        return new PhotoTagCollector();
     }
 }

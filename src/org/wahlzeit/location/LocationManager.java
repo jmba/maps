@@ -31,7 +31,6 @@ public class LocationManager {
             location = new GPSLocation(locationString);
             gpsLocationPool.put(locationString,location);
         }
-
         return location;
     }
 

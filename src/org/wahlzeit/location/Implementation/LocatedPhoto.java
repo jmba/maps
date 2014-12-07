@@ -4,11 +4,17 @@ import org.wahlzeit.location.ILocation;
 import org.wahlzeit.maptype.IMapType;
 import org.wahlzeit.model.Photo;
 
+import java.security.InvalidParameterException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 public class LocatedPhoto extends Photo {
 	
 	private ILocation location;
 	private IMapType mapTape;
+
+	public static final String LOCATION = "location";
 
 	/**
 	 * @methodtype get
@@ -41,4 +47,5 @@ public class LocatedPhoto extends Photo {
 	public void setLocation(ILocation location) {
 		this.location = location;
 	}
+
 }
