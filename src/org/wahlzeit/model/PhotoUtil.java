@@ -31,18 +31,18 @@ import org.wahlzeit.services.*;
 /**
  * PhotoUtil provides a set of utility functions to create defined images.
  * Images are created from a source in different sizes as needed by the app.
- * 
+ *
  * @author dirkriehle
  *
  */
 public class PhotoUtil {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public static Photo createPhoto(File source, PhotoId id) throws Exception {
 		Photo result = PhotoWithMapTypeFactory.getInstance().createPhoto(id);
-		
+
 		Image sourceImage = createImageFiles(source, id);
 
 		int sourceWidth = sourceImage.getWidth(null);
@@ -51,9 +51,9 @@ public class PhotoUtil {
 
 		return result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public static Image createImageFiles(File source, PhotoId id) throws Exception {
 		Image sourceImage = ImageIO.read(source);
@@ -62,23 +62,23 @@ public class PhotoUtil {
 		int sourceWidth = sourceImage.getWidth(null);
 		int sourceHeight = sourceImage.getHeight(null);
 		assertHasValidSize(sourceWidth, sourceHeight);
-		
+
 		for (PhotoSize size : PhotoSize.values()) {
 			if (!size.isWiderAndHigher(sourceWidth, sourceHeight)) {
 				createImageFile(sourceImage, id, size);
 			}
 		}
-		
+
 		return sourceImage;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
-	protected static void createImageFile(Image source, PhotoId id, PhotoSize size) throws Exception {	
+	protected static void createImageFile(Image source, PhotoId id, PhotoSize size) throws Exception {
 		int sourceWidth = source.getWidth(null);
 		int sourceHeight = source.getHeight(null);
-		
+
 		int targetWidth = size.calcAdjustedWidth(sourceWidth, sourceHeight);
 		int targetHeight = size.calcAdjustedHeight(sourceWidth, sourceHeight);
 
@@ -90,7 +90,7 @@ public class PhotoUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected static BufferedImage scaleImage(Image source, int width, int height) {
 		source = source.getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -101,9 +101,9 @@ public class PhotoUtil {
 		g2d.drawImage(source, 0, 0, null);
 		return result;
 	}
-	
+
 	/**
-	 * @methodtype assertion 
+	 * @methodtype assertion
 	 */
 	protected static void assertIsValidImage(Image image) {
 		if (image == null) {
@@ -112,7 +112,7 @@ public class PhotoUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected static void assertHasValidSize(int cw, int ch) {
 		if (PhotoSize.THUMB.isWiderAndHigher(cw, ch)) {

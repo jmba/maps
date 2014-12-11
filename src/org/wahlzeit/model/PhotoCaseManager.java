@@ -27,30 +27,30 @@ import org.wahlzeit.services.*;
 
 /**
  * The photo case manager provides access to and manages persistent photo cases.
- *  
+ *
  * @author dirkriehle
  *
  */
 public class PhotoCaseManager extends ObjectManager {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	protected Map<CaseId, PhotoCase> openPhotoCases = new HashMap<CaseId, PhotoCase>();
 
 	/**
-	 * 
+	 *
 	 */
 	protected static final PhotoCaseManager instance = new PhotoCaseManager();
 
 	/**
-	 * 
+	 *
 	 * @methodtype get
 	 */
 	public static final PhotoCaseManager getInstance() {
 		return instance;
 	}
-	
+
 	/**
 	 * @methodtype constructor
 	 * @methodproperty composed
@@ -58,7 +58,7 @@ public class PhotoCaseManager extends ObjectManager {
 	protected PhotoCaseManager() {
 		initialize();
 	}
-	
+
 	/**
 	 * @methodtype initialization
 	 * @methodproperty regular
@@ -70,17 +70,17 @@ public class PhotoCaseManager extends ObjectManager {
 			openPhotoCases.put(pc.getId(), pc);
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @methodtype factory
 	 */
 	protected PhotoCase createObject(ResultSet rset) throws SQLException {
 		return new PhotoCase(rset);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @methodtype get
 	 */
 	public PhotoCase getPhotoCase(int id) {
@@ -93,12 +93,12 @@ public class PhotoCaseManager extends ObjectManager {
 				SysLog.logThrowable(sex);
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @methodtype command
 	 */
 	public void addPhotoCase(PhotoCase myCase) {
@@ -113,9 +113,9 @@ public class PhotoCaseManager extends ObjectManager {
 			SysLog.logThrowable(sex);
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @methodtype command
 	 */
 	public void removePhotoCase(PhotoCase myCase) {
@@ -126,10 +126,10 @@ public class PhotoCaseManager extends ObjectManager {
 		} catch (SQLException sex) {
 			SysLog.logThrowable(sex);
 		}
-	}	
-	
+	}
+
 	/**
-	 * 
+	 *
 	 * @methodtype command
 	 */
 	public void loadOpenPhotoCases(Collection<PhotoCase> result) {
@@ -139,12 +139,12 @@ public class PhotoCaseManager extends ObjectManager {
 		} catch (SQLException sex) {
 			SysLog.logThrowable(sex);
 		}
-		
+
 		SysLog.logSysInfo("loaded all open photo cases");
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @methodtype command
 	 */
 	public void savePhotoCases() {
@@ -155,9 +155,9 @@ public class PhotoCaseManager extends ObjectManager {
 			SysLog.logThrowable(sex);
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @methodtype get
 	 */
 	public PhotoCase[] getOpenPhotoCasesByAscendingAge() {
@@ -165,7 +165,7 @@ public class PhotoCaseManager extends ObjectManager {
 		Arrays.sort(resultArray, getPhotoCasesByAscendingAgeComparator());
 		return resultArray;
 	}
-	
+
 	/**
 	 * @methodtype get
 	 */
