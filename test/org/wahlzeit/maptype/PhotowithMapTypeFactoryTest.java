@@ -19,15 +19,15 @@ public class PhotoWithMapTypeFactoryTest extends TestCase {
         CountryMap countryMap = (CountryMap) MapTypeManager.createMapTypeObject("DE");
         CityMap cityMap = (CityMap) MapTypeManager.createMapTypeObject("NYC");
 
-        assertTrue(countryMap.getIdentCode().equals("DE"));
-        assertTrue(cityMap.getIdentCode().equals("NYC"));
+        assertTrue(countryMap.getIdentCode() == "DE");
+        assertTrue(cityMap.getIdentCode() == "NYC");
         assertTrue((countryMap instanceof CountryMap));
         assertTrue((cityMap instanceof CityMap));
     }
 
     public void testGetCityMapObject(){
         CityMap cityMap = (CityMap) MapTypeManager.createCityMapObject("NYC");
-        assertTrue(cityMap.getIdentCode().equals("NYC"));
+        assertTrue(cityMap.getIdentCode() == "NYC");
     }
 
     public void testGetCountryMapObject(){
