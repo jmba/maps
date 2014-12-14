@@ -1,10 +1,11 @@
 package org.wahlzeit.location;
 
-import org.wahlzeit.location.Implementation.GPSLocation;
-import org.wahlzeit.location.Implementation.MapCodeLocation;
+import org.wahlzeit.location.implementation.GPSLocation;
+import org.wahlzeit.location.implementation.MapCodeLocation;
 
 import java.security.InvalidParameterException;
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.WeakHashMap;
 
 /**
  * Created by Johannes Bayerl on 25.11.14.
@@ -14,8 +15,8 @@ import java.util.HashMap;
  */
 public class LocationManager {
 
-    private static HashMap<String,GPSLocation> gpsLocationPool = new HashMap<String,GPSLocation>();
-    private static HashMap<String,MapCodeLocation> mapCodeLocationPool = new HashMap<String,MapCodeLocation>();
+    private static WeakHashMap<String,GPSLocation> gpsLocationPool = new WeakHashMap<String,GPSLocation>();
+    private static WeakHashMap<String,MapCodeLocation> mapCodeLocationPool = new WeakHashMap<String,MapCodeLocation>();
 
     /**
      * Factorymethod for GPSLocation-objects
@@ -52,11 +53,40 @@ public class LocationManager {
         return location;
     }
 
-    public static HashMap<String,GPSLocation> getAllGPSLocations(){
-        return gpsLocationPool;
+    /**
+     * Factorymethod for MapCode- and GPS- locations. It depends
+     * on the input-string which Type returned.
+     * @return
+     */
+    public static ILocation getILocation(String locationString){
+        ILocation location = null;
+        Boolean exceptionThrown = false;
+        InvalidParameterException exceptionMapCode = null;
+
+        try{
+            location = getMapCodeLocationObject(locationString);
+        }catch (InvalidParameterException ex){
+            exceptionThrown = true;
+            exceptionMapCode = ex;
+        }
+
+        if(exceptionThrown) {
+            try {
+                location = getGPSLocationObject(locationString);
+            } catch (InvalidParameterException exceptionGPS) {
+                exceptionGPS.printStackTrace();
+                exceptionMapCode.printStackTrace();
+            }
+        }
+
+        return location;
     }
 
-    public static HashMap<String,MapCodeLocation> getAllMapCodeLocations(){
-        return mapCodeLocationPool;
+    public static Collection<GPSLocation> getAllGPSLocations(){
+        return gpsLocationPool.values();
+    }
+
+    public static Collection<MapCodeLocation> getAllMapCodeLocations(){
+        return mapCodeLocationPool.values();
     }
 }

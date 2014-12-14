@@ -1,12 +1,8 @@
-package org.wahlzeit.location.Implementation;
+package org.wahlzeit.location.implementation;
 
 import org.wahlzeit.location.ILocation;
 import org.wahlzeit.maptype.IMapType;
 import org.wahlzeit.model.Photo;
-
-import java.security.InvalidParameterException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 public class LocatedPhoto extends Photo {

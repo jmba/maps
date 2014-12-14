@@ -1,7 +1,5 @@
-package org.wahlzeit.location.Implementation;
+package org.wahlzeit.location.implementation;
 
-
-import java.security.InvalidParameterException;
 
 /**
  * Concrete implementation of an GPS-location.
@@ -9,7 +7,7 @@ import java.security.InvalidParameterException;
  * @author Johannes Bayerl
  * @type value
  */
-public class GPSLocation extends AbstractLocation {
+public final class GPSLocation extends AbstractLocation {
 
 	private final GPSCoordinate longitude;
 	private final GPSCoordinate latitude;
@@ -29,7 +27,7 @@ public class GPSLocation extends AbstractLocation {
 		} else if(locationArray[1].equals("S")){
 			latitudeDirection = "S";
 		} else {
-			throw new InvalidParameterException(
+			throw new IllegalArgumentException(
 					"MapcodeLocation.doSetLocation(" + location
 							+ ") parameter invalid.");
 		}
@@ -42,7 +40,7 @@ public class GPSLocation extends AbstractLocation {
 		} else if(locationArray[3].equals("W")){
 			longitudeDirection = "W";
 		} else {
-			throw new InvalidParameterException(
+			throw new IllegalArgumentException(
 					"MapcodeLocation.doSetLocation(" + location
 							+ ") parameter invalid.");
 		}

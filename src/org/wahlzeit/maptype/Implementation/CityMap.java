@@ -1,6 +1,9 @@
-package org.wahlzeit.maptype.Implementation;
+package org.wahlzeit.maptype.implementation;
 
 import junit.framework.Assert;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Represents the map of a city. The used ident-code format is
@@ -11,7 +14,7 @@ import junit.framework.Assert;
  * Created by Johannes Bayerl on 21.11.14.
  */
 public class CityMap extends AbstractMapType {
-
+    public static final String CITYCODE = "citycode";
     private String cityCode = "";
 
     /**
@@ -44,5 +47,17 @@ public class CityMap extends AbstractMapType {
         if(!(cityCode.length()==3 && cityCode.matches(pattern))){
             throw new IllegalArgumentException("Please enter the city-code in valid format");
         }
+    }
+
+    @Override
+    public void writeOn(ResultSet rset) throws SQLException {
+        super.writeOn(rset);
+        rset.updateString(CITYCODE, cityCode);
+    }
+
+    @Override
+    public void readFrom(ResultSet rset) throws SQLException{
+        super.readFrom(rset);
+        cityCode = rset.getString(CITYCODE);
     }
 }

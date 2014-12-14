@@ -25,7 +25,7 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
-import org.wahlzeit.maptype.PhotoWithMapTypeFactory;
+import org.wahlzeit.maptype.TypedPhotoFactory;
 import org.wahlzeit.services.*;
 
 /**
@@ -41,7 +41,7 @@ public class PhotoUtil {
 	 *
 	 */
 	public static Photo createPhoto(File source, PhotoId id) throws Exception {
-		Photo result = PhotoWithMapTypeFactory.getInstance().createPhoto(id);
+		Photo result = TypedPhotoFactory.getInstance().createPhoto(id);
 
 		Image sourceImage = createImageFiles(source, id);
 

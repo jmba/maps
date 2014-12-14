@@ -22,7 +22,7 @@ package org.wahlzeit.model;
 
 import java.util.*;
 
-import org.wahlzeit.maptype.PhotoWithMapTypeFactory;
+import org.wahlzeit.maptype.TypedPhotoFactory;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 
@@ -53,7 +53,7 @@ public class UserSession extends Session {
 	protected Client client = new Guest();
 	protected PhotoSize photoSize = PhotoSize.MEDIUM;
 	protected long confirmationCode = -1; // -1 means not set
-	protected PhotoFilter photoFilter = PhotoWithMapTypeFactory.getInstance().createPhotoFilter();
+	protected PhotoFilter photoFilter = TypedPhotoFactory.getInstance().createPhotoFilter();
 	protected Set praisedPhotos = new HashSet<Photo>();
 
 	/**

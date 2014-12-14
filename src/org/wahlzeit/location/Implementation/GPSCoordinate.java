@@ -1,4 +1,4 @@
-package org.wahlzeit.location.Implementation;
+package org.wahlzeit.location.implementation;
 
 /**
  * Concrete representation of a gps coordinate. It
@@ -6,7 +6,7 @@ package org.wahlzeit.location.Implementation;
  * @author jonet
  *
  */
-public class GPSCoordinate {
+public final class GPSCoordinate {
 
 	private final String coordinateDirection;
 	private final double degree;

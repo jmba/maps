@@ -1,18 +1,25 @@
 package org.wahlzeit.maptype;
 
 import junit.framework.TestCase;
-import org.wahlzeit.maptype.Implementation.CityMap;
-import org.wahlzeit.maptype.Implementation.CountryMap;
-import org.wahlzeit.maptype.Implementation.PhotoWithMapType;
+import org.wahlzeit.maptype.implementation.CityMap;
+import org.wahlzeit.maptype.implementation.CountryMap;
+import org.wahlzeit.maptype.implementation.TypedPhoto;
 
 /**
  * Created by jonet on 07.12.14.
  */
-public class PhotoWithMapTypeFactoryTest extends TestCase {
+public class TypedPhotoFactoryTest extends TestCase {
 
     public void testCreatePhoto() {
-        PhotoWithMapType photo = PhotoWithMapTypeFactory.getInstance().createPhoto();
-        assertTrue((photo instanceof PhotoWithMapType));
+        TypedPhoto photo = TypedPhotoFactory.getInstance().createPhoto();
+        assertTrue((photo instanceof TypedPhoto));
+    }
+
+    public void testSetPhotoType(){
+        TypedPhoto photo = TypedPhotoFactory.getInstance().createPhoto();
+        CountryMap countryMap = (CountryMap) MapTypeManager.createMapTypeObject("DE");
+        photo.setPhotoType(countryMap);
+        assertTrue((photo.getPhotoType() instanceof CountryMap));
     }
 
     public void testGetMapTypeObject(){

@@ -1,9 +1,9 @@
 package org.wahlzeit.maptype;
 
 import junit.framework.TestCase;
-import org.wahlzeit.location.Implementation.AbstractLocation;
-import org.wahlzeit.location.Implementation.GPSLocation;
-import org.wahlzeit.maptype.Implementation.CityMap;
+import org.wahlzeit.location.implementation.AbstractLocation;
+import org.wahlzeit.location.implementation.GPSLocation;
+import org.wahlzeit.maptype.implementation.CityMap;
 
 public class CityMapTest extends TestCase {
 	public void testCityMapCorrect()  {

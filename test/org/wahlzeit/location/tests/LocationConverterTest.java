@@ -2,7 +2,7 @@ package org.wahlzeit.location.tests;
 
 import junit.framework.TestCase;
 
-import org.wahlzeit.location.Implementation.LocationConverter;
+import org.wahlzeit.location.implementation.LocationConverter;
 import com.mapcode.UnknownMapcodeException;
 
 public class LocationConverterTest extends TestCase {

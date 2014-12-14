@@ -25,7 +25,7 @@ import java.sql.*;
 import java.util.*;
 
 import org.wahlzeit.main.*;
-import org.wahlzeit.maptype.PhotoWithMapTypeFactory;
+import org.wahlzeit.maptype.TypedPhotoFactory;
 import org.wahlzeit.services.*;
 
 /**
@@ -90,7 +90,7 @@ public class PhotoManager extends ObjectManager {
 	 *
 	 */
 	public PhotoManager() {
-		photoTagCollector = PhotoWithMapTypeFactory.getInstance().createPhotoTagCollector();
+		photoTagCollector = TypedPhotoFactory.getInstance().createPhotoTagCollector();
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class PhotoManager extends ObjectManager {
 	 *
 	 */
 	protected Photo createObject(ResultSet rset) throws SQLException {
-		return PhotoWithMapTypeFactory.getInstance().createPhoto(rset);
+		return TypedPhotoFactory.getInstance().createPhoto(rset);
 	}
 
 	/**

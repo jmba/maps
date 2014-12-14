@@ -1,4 +1,4 @@
-package org.wahlzeit.location.Implementation;
+package org.wahlzeit.location.implementation;
 
 import java.security.InvalidParameterException;
 

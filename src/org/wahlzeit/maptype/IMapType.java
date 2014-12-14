@@ -2,12 +2,14 @@ package org.wahlzeit.maptype;
 
 import org.wahlzeit.location.ILocation;
 
+import java.io.Serializable;
+
 /**
  * Interface to implement in different concrete maptypes.
  *
  * Created by Johannes Bayerl on 12.11.2014
  */
-public interface IMapType {
+public interface IMapType extends IPhotoType {
 
     /**
      * @return

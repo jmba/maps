@@ -1,7 +1,7 @@
 package org.wahlzeit.location.tests;
 
-import org.wahlzeit.location.Implementation.AbstractLocation;
-import org.wahlzeit.location.Implementation.GPSLocation;
+import org.wahlzeit.location.implementation.AbstractLocation;
+import org.wahlzeit.location.implementation.GPSLocation;
 
 import junit.framework.TestCase;
 

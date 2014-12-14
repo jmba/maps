@@ -2,7 +2,6 @@
 /web/data/photos
 /web/WEB-INF/classes
 /target/
-web/
 .classpath.save
 .classpath~
 .idea/

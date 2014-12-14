@@ -1,7 +1,7 @@
 package org.wahlzeit.maptype;
 
-import org.wahlzeit.maptype.Implementation.CityMap;
-import org.wahlzeit.maptype.Implementation.CountryMap;
+import org.wahlzeit.maptype.implementation.CityMap;
+import org.wahlzeit.maptype.implementation.CountryMap;
 
 /**
  * Created by Johannes Bayerl on 07.12.14.

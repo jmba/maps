@@ -1,6 +1,6 @@
 package org.wahlzeit.location.tests;
 
-import org.wahlzeit.location.Implementation.MapCodeLocation;
+import org.wahlzeit.location.implementation.MapCodeLocation;
 
 import junit.framework.TestCase;
 

@@ -1,11 +1,9 @@
 package org.wahlzeit.location.tests;
 
 import junit.framework.TestCase;
-import org.wahlzeit.location.Implementation.GPSLocation;
-import org.wahlzeit.location.Implementation.MapCodeLocation;
+import org.wahlzeit.location.implementation.GPSLocation;
+import org.wahlzeit.location.implementation.MapCodeLocation;
 import org.wahlzeit.location.LocationManager;
-
-import java.util.HashMap;
 
 
 public class LocationManagerTest extends TestCase {

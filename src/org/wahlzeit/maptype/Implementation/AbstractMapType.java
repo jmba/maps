@@ -1,7 +1,11 @@
-package org.wahlzeit.maptype.Implementation;
+package org.wahlzeit.maptype.implementation;
 
 import org.wahlzeit.location.ILocation;
+import org.wahlzeit.location.LocationManager;
 import  org.wahlzeit.maptype.IMapType;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Abstract class which implements default implementation for all maptypes.
@@ -9,6 +13,10 @@ import  org.wahlzeit.maptype.IMapType;
  * Created by Johannes Bayerl on 21.11.14.
  */
 public abstract class AbstractMapType implements IMapType {
+
+    public static final String AREA = "area";
+    public static final String POPULATION = "population";
+    public static final String LOCATION = "location";
 
     private int population;
     private int area;
@@ -122,4 +130,18 @@ public abstract class AbstractMapType implements IMapType {
      * @methodtype getter
      */
     protected abstract String doGetIdentCode();
+
+    @Override
+    public void writeOn(ResultSet rset) throws SQLException {
+            rset.updateString(AREA, Integer.toString(getArea()));
+            rset.updateString(POPULATION,Integer.toString(getPopulation()));
+            rset.updateString(LOCATION,location.asString());
+    }
+
+    @Override
+    public void readFrom(ResultSet rset)throws SQLException{
+            area = Integer.parseInt(rset.getString(AREA));
+            population = Integer.parseInt(rset.getString(POPULATION));
+            location = LocationManager.getILocation(rset.getString(LOCATION));
+    }
 }

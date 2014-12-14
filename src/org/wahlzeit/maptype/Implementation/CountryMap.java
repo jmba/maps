@@ -1,6 +1,9 @@
-package org.wahlzeit.maptype.Implementation;
+package org.wahlzeit.maptype.implementation;
 
 import junit.framework.Assert;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Represents the map of a country. The used ident-code format is
@@ -12,6 +15,7 @@ import junit.framework.Assert;
  */
 public class CountryMap extends AbstractMapType {
 
+    public static final String COUNTRYCODE = "countrycode";
     private String countryCode = "";
 
     /**
@@ -44,5 +48,17 @@ public class CountryMap extends AbstractMapType {
         if(!(countryCode.length()== 2 && countryCode.matches(pattern))){
             throw new IllegalArgumentException("Please enter the country-code in valid format");
         }
+    }
+
+    @Override
+    public void writeOn(ResultSet rset) throws SQLException {
+        super.writeOn(rset);
+        rset.updateString(COUNTRYCODE,countryCode);
+    }
+
+    @Override
+    public void readFrom(ResultSet rset) throws SQLException{
+        super.readFrom(rset);
+        countryCode = rset.getString(COUNTRYCODE);
     }
 }
