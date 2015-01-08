@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class TypedPhotoFactory extends PhotoFactory {
     private static TypedPhotoFactory instance = null;
 
-    private TypedPhotoFactory() {}
+    public TypedPhotoFactory() {}
 
     /**
      * @return Singleton-instance

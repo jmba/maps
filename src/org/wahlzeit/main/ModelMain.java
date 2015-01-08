@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.sql.*;
 
+import org.wahlzeit.maptype.TypedPhotoFactory;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.servlets.AbstractServlet;
@@ -51,11 +52,12 @@ public abstract class ModelMain extends AbstractMain {
 		
  		loadGlobals();
 
-		PhotoFactory.initialize();
+		//PhotoFactory.initialize();
+		PhotoFactory.setInstance(new TypedPhotoFactory());
 	}
 	
 	/**
-	 * 
+	 *
 	 */
 	protected boolean hasGlobals() throws SQLException {
 		DatabaseConnection dbc = mainSession.ensureDatabaseConnection();
