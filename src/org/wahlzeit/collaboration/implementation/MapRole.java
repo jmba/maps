@@ -1,6 +1,8 @@
 package org.wahlzeit.collaboration.implementation;
 
 import org.wahlzeit.collaboration.IMap;
+import org.wahlzeit.maptype.IMapType;
+import org.wahlzeit.maptype.MapTypeManager;
 
 /**
  * Created by jonet on 11.01.15.
@@ -11,10 +13,10 @@ public class MapRole implements IMap {
 
     static MapRole createFor(String role, MapCore core){
         MapRole returnRole = null;
-        if(role.equals("ArtworkMapRole")){
+        if(role.equals(ArtworkMapRole.ROLE_IDENTIFIER)){
             returnRole = new ArtworkMapRole();
-        } else if (role.equals("RealAreaMapRole")){
-            returnRole = new RealAreaMapRole();
+        } else if (role.equals(RealAreaMapRole.ROLE_IDENTIFIER)){
+            //Creation real object
         }
 
         returnRole.core = core;
@@ -61,5 +63,29 @@ public class MapRole implements IMap {
     @Override
     public String asString() {
         return null;
+    }
+
+    /**
+     * Decides if the given ident-code fits to CountryMap-type
+     * or CityMap-type
+     *
+     * @methodtype getter
+     * @param identCode
+     * @return
+     */
+    public static RealAreaMapRole createMapTypeObject(String identCode){
+        RealAreaMapRole mapType = null;
+
+        String pattern = "[a-zA-Z]+";
+
+        if(identCode.length()== 3 && identCode.matches(pattern)){
+            mapType = MapTypeManager.createCityMapObject(identCode);
+        } else if(identCode.length()== 2 && identCode.matches(pattern)){
+            mapType = MapTypeManager.createCountryMapObject(identCode);
+        } else {
+            throw new IllegalArgumentException("Please enter the ident-code in valid format");
+        }
+
+        return mapType;
     }
 }

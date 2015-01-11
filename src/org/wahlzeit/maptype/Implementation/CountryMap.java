@@ -1,6 +1,7 @@
 package org.wahlzeit.maptype.implementation;
 
 import junit.framework.Assert;
+import org.wahlzeit.collaboration.implementation.RealAreaMapRole;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  *
  * Created by Johannes Bayerl on 21.11.14.
  */
-public class CountryMap extends AbstractMapType {
+public class CountryMap extends RealAreaMapRole {
 
     public static final String COUNTRYCODE = "countrycode";
     private String countryCode = "";
