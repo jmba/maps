@@ -20,16 +20,11 @@ public class MapCore implements IMap {
     @Override
     public void addRole(String role) {
         MapRole mRole = getRole(role);
-        if(mRole != null){
+        if(mRole == null){
             mRole = MapRole.createFor(role,this);
             if(mRole != null){
                 roles.put(role, mRole);
             }
         }
-    }
-
-    @Override
-    public String asString() {
-        return null;
     }
 }

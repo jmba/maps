@@ -91,4 +91,9 @@ public class ArtworkMapRole extends MapRole {
     public void setStyle(String style) {
         this.style = style;
     }
+
+    @Override
+    public String asString() {
+        return ROLE_IDENTIFIER;
+    }
 }

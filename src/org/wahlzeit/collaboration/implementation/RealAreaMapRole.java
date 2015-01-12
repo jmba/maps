@@ -143,4 +143,9 @@ public abstract class RealAreaMapRole extends MapRole implements IMapType {
         population = Integer.parseInt(rset.getString(POPULATION));
         location = LocationManager.getILocation(rset.getString(LOCATION));
     }
+
+    @Override
+    public String asString() {
+        return ROLE_IDENTIFIER;
+    }
 }

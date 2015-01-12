@@ -8,5 +8,4 @@ import org.wahlzeit.collaboration.implementation.MapRole;
 public interface IMap {
     public MapRole getRole(String role);
     public void addRole(String role);
-    public String asString();
 }

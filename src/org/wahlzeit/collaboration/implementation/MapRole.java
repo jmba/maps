@@ -1,13 +1,12 @@
 package org.wahlzeit.collaboration.implementation;
 
 import org.wahlzeit.collaboration.IMap;
-import org.wahlzeit.maptype.IMapType;
 import org.wahlzeit.maptype.MapTypeManager;
 
 /**
  * Created by jonet on 11.01.15.
  */
-public class MapRole implements IMap {
+public abstract class MapRole implements IMap {
 
     private MapCore core;
 
@@ -16,7 +15,7 @@ public class MapRole implements IMap {
         if(role.equals(ArtworkMapRole.ROLE_IDENTIFIER)){
             returnRole = new ArtworkMapRole();
         } else if (role.equals(RealAreaMapRole.ROLE_IDENTIFIER)){
-            //Creation real object
+            //returnRole = new RealAreaMapRole();
         }
 
         returnRole.core = core;
@@ -60,11 +59,6 @@ public class MapRole implements IMap {
     }
 
 
-    @Override
-    public String asString() {
-        return null;
-    }
-
     /**
      * Decides if the given ident-code fits to CountryMap-type
      * or CityMap-type
@@ -88,4 +82,6 @@ public class MapRole implements IMap {
 
         return mapType;
     }
+
+    public abstract String asString();
 }
