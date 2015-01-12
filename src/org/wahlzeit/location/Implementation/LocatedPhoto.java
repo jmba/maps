@@ -1,14 +1,14 @@
 package org.wahlzeit.location.implementation;
 
 import org.wahlzeit.location.ILocation;
-import org.wahlzeit.maptype.IMapType;
+import org.wahlzeit.maptype.IRealAreaMapType;
 import org.wahlzeit.model.Photo;
 
 
 public class LocatedPhoto extends Photo {
 	
 	private ILocation location;
-	private IMapType mapTape;
+	private IRealAreaMapType mapTape;
 
 	public static final String LOCATION = "location";
 
@@ -16,7 +16,7 @@ public class LocatedPhoto extends Photo {
 	 * @methodtype get
 	 * @return
 	 */
-	public IMapType getMapTape() {
+	public IRealAreaMapType getMapTape() {
 		return mapTape;
 	}
 
@@ -24,7 +24,7 @@ public class LocatedPhoto extends Photo {
 	 * @methodtype set
 	 * @param mapTape
 	 */
-	public void setMapTape(IMapType mapTape) {
+	public void setMapTape(IRealAreaMapType mapTape) {
 		this.mapTape = mapTape;
 	}
 

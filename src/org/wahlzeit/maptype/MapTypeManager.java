@@ -40,8 +40,8 @@ public class MapTypeManager {
      * @param identCode
      * @return
      */
-    public static IMapType createMapTypeObject(String identCode){
-        IMapType mapType = null;
+    public static IRealAreaMapType createMapTypeObject(String identCode){
+        IRealAreaMapType mapType = null;
 
         String pattern = "[a-zA-Z]+";
 

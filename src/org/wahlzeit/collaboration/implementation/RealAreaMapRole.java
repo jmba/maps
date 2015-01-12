@@ -2,15 +2,15 @@ package org.wahlzeit.collaboration.implementation;
 
 import org.wahlzeit.location.ILocation;
 import org.wahlzeit.location.LocationManager;
-import org.wahlzeit.maptype.IMapType;
+import org.wahlzeit.maptype.IRealAreaMapType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by jonet on 11.01.15.
+ * Created by Johannes Bayerl on 11.01.15.
  */
-public abstract class RealAreaMapRole extends MapRole implements IMapType {
+public abstract class RealAreaMapRole extends MapRole implements IRealAreaMapType {
     public static String ROLE_IDENTIFIER = "RealAreaMapRole";
 
     public static final String AREA = "area";

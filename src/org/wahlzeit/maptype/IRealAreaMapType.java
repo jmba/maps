@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * Created by Johannes Bayerl on 12.11.2014
  */
-public interface IMapType extends IPhotoType {
+public interface IRealAreaMapType extends IPhotoType {
 
     /**
      * @return

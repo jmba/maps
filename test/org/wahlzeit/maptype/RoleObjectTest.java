@@ -1,6 +1,7 @@
 package org.wahlzeit.maptype;
 
 import junit.framework.TestCase;
+import org.wahlzeit.collaboration.implementation.ArtworkMapRole;
 import org.wahlzeit.collaboration.implementation.MapCore;
 import org.wahlzeit.collaboration.implementation.RealAreaMapRole;
 import org.wahlzeit.maptype.implementation.CityMap;
@@ -15,13 +16,16 @@ public class RoleObjectTest extends TestCase {
         map.setIdentCode("ERH");
 
         MapCore core = new MapCore();
-        core.addRole("RealAreaMapRole");
+        core.addRole("RealAreaMapRole",map);
 
         RealAreaMapRole realAreaMapRole = (RealAreaMapRole) core.getRole("RealAreaMapRole");
+        assertTrue(realAreaMapRole.getIdentCode().equals("ERH"));
+        assertTrue(realAreaMapRole instanceof CityMap);
+    }
 
-        //System.out.println(realAreaMapRole.asString());
-        //if(realAreaMapRole != null) {
-        //    System.out.println("üüüüüüüüüüüüüüüüü" + realAreaMapRole.getArea());
-        //}
+    public void testRoleObjectWithCreationTest()  {
+        MapCore core = new MapCore();
+        core.addRole("ArtworkMapRole");
+        assertTrue(core.getRole("ArtworkMapRole") instanceof ArtworkMapRole);
     }
 }
