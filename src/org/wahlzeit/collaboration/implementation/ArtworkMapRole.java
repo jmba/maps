@@ -25,7 +25,11 @@ public class ArtworkMapRole extends MapRole {
      * @param name
      */
     public void setName(String name) {
-        this.name = name;
+        if(name != null) {
+            this.name = name;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -41,7 +45,11 @@ public class ArtworkMapRole extends MapRole {
      * @param artist
      */
     public void setArtist(String artist) {
-        this.artist = artist;
+        if(artist != null) {
+            this.artist = artist;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -57,7 +65,11 @@ public class ArtworkMapRole extends MapRole {
      * @param creationDate
      */
     public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
+        if(creationDate != null) {
+            this.creationDate = creationDate;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -73,7 +85,11 @@ public class ArtworkMapRole extends MapRole {
      * @param era
      */
     public void setEra(String era) {
-        this.era = era;
+        if(era != null) {
+            this.era = era;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -89,7 +105,11 @@ public class ArtworkMapRole extends MapRole {
      * @param style
      */
     public void setStyle(String style) {
-        this.style = style;
+        if(style != null) {
+            this.style = style;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override

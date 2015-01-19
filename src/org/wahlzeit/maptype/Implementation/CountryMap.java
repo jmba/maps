@@ -25,7 +25,7 @@ public class CountryMap extends RealAreaMapRole {
      * @throws IllegalArgumentException
      */
     @Override
-    protected void doSetIdentCode(String countryCode) throws IllegalArgumentException {
+    protected void doSetIdentCode(String countryCode) {
         assertCountryCodeFormat(countryCode);
         this.countryCode = countryCode;
 

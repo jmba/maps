@@ -24,7 +24,7 @@ public class CityMap extends RealAreaMapRole {
      * @methodtype setter
      */
     @Override
-    protected void doSetIdentCode(String cityCode) throws IllegalArgumentException {
+    protected void doSetIdentCode(String cityCode) {
         assertCityCodeFormat(cityCode);
         this.cityCode = cityCode;
 
